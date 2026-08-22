@@ -203,7 +203,9 @@ export default function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <div className="container nav-wrap">
-          <a className="brand" href="#top" aria-label="Awais Ibrahim home">AI<span>.</span></a>
+          <a className="brand" href="#top" aria-label="Awais Ibrahim home">
+            <span className="brand-prefix">Developed by</span> Awais<span>.</span>
+          </a>
           <nav aria-label="Primary navigation">
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
