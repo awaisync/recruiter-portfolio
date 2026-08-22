@@ -62,6 +62,57 @@ const education = [
   },
 ];
 
+const selectedWork = [
+  {
+    image: "/work/hospicare-m2000.jpg",
+    alt: "Awais Ibrahim beside an Abbott m2000 molecular diagnostics system.",
+    category: "Field service engineering",
+    title: "Molecular diagnostics support",
+    summary: "Hands-on installation, commissioning, preventive maintenance, and technical support for automated molecular diagnostic workflows.",
+    tags: ["Abbott m2000", "Commissioning", "Laboratory automation"],
+  },
+  {
+    image: "/work/hospicare-alinity.jpg",
+    alt: "Abbott Alinity automated diagnostic instrument in a laboratory.",
+    category: "Clinical diagnostics",
+    title: "Laboratory automation",
+    summary: "Practical support for automated diagnostic instruments, combining system troubleshooting, application support, and customer handover.",
+    tags: ["Alinity", "Troubleshooting", "Service delivery"],
+  },
+  {
+    image: "/work/hospicare-panther.jpg",
+    alt: "Awais Ibrahim beside a Grifols Procleix Panther system.",
+    category: "Clinical diagnostics",
+    title: "Procleix Panther service",
+    summary: "Certified service training and field support experience for Grifols Procleix Panther laboratory instrumentation.",
+    tags: ["Grifols", "Procleix Panther", "Service training"],
+  },
+  {
+    image: "/work/imarat-team.jpeg",
+    alt: "Awais Ibrahim with a colleague at IMARAT.",
+    category: "Software delivery",
+    title: "Product delivery at IMARAT",
+    summary: "Worked in an Agile engineering environment on mobile and backend products supporting IMARAT’s digital real-estate platforms.",
+    tags: ["Agile", "React Native", "Spring Boot"],
+  },
+  {
+    image: "/work/propsure-dashboard.png",
+    alt: "Prop-tech analytics dashboard interface.",
+    category: "Product engineering",
+    title: "Property-tech dashboard",
+    summary: "Contributed to digital property-platform work, with a focus on maintainable product features, API integration, and user-facing delivery.",
+    tags: ["Web product", "APIs", "Data visualisation"],
+  },
+  {
+    image: "/work/graana-mobile.png",
+    alt: "Graana mobile property application interface.",
+    category: "Mobile engineering",
+    title: "Mobile property experience",
+    summary: "Developed and maintained cross-platform mobile application features with React Native, TypeScript, Redux, and backend integrations.",
+    tags: ["React Native", "TypeScript", "Mobile apps"],
+  },
+];
+
 function SectionHeading({ number, title }) {
   return (
     <div className="section-heading">
@@ -90,12 +141,24 @@ function useScrollReveal() {
 
 export default function App() {
   const [activeSkillFilter, setActiveSkillFilter] = useState("All");
+  const [activeWork, setActiveWork] = useState(null);
   const visibleSkills = useMemo(
     () => activeSkillFilter === "All" ? skillGroups : skillGroups.filter((group) => group.category === activeSkillFilter),
     [activeSkillFilter],
   );
 
   useScrollReveal();
+
+  useEffect(() => {
+    if (!activeWork) return undefined;
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") setActiveWork(null);
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [activeWork]);
 
   return (
     <>
@@ -106,6 +169,7 @@ export default function App() {
           <nav aria-label="Primary navigation">
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
+            <a href="#work">Work</a>
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a className="nav-contact" href="#contact">Contact</a>
@@ -171,9 +235,28 @@ export default function App() {
           </div>
         </section>
 
+        <section className="section work-section reveal" id="work">
+          <div className="container">
+            <SectionHeading number="03 / Selected work" title="Engineering in the field and in production" />
+            <p className="work-intro">A selection of real environments and products across diagnostic laboratory automation and digital property platforms. Select a card for context.</p>
+            <div className="work-grid">
+              {selectedWork.map((item) => (
+                <button className="work-card" key={item.title} type="button" onClick={() => setActiveWork(item)}>
+                  <img src={item.image} alt={item.alt} loading="lazy" />
+                  <span className="work-card-content">
+                    <span className="work-category">{item.category}</span>
+                    <strong>{item.title}</strong>
+                    <span className="work-open">View context <span aria-hidden="true">↗</span></span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section reveal" id="skills">
           <div className="container">
-            <SectionHeading number="03 / Skills" title="Technical toolkit" />
+            <SectionHeading number="04 / Skills" title="Technical toolkit" />
             <div className="skill-filter" role="group" aria-label="Filter skills by area">
               {["All", "Software", "Embedded", "Data", "Service"].map((filter) => (
                 <button
@@ -196,7 +279,7 @@ export default function App() {
 
         <section className="section section-tint reveal" id="education">
           <div className="container">
-            <SectionHeading number="04 / Education" title="Academic background" />
+            <SectionHeading number="05 / Education" title="Academic background" />
             <div className="education-grid">
               {education.map((item) => (
                 <article className="education-card" key={item.degree}>
@@ -214,7 +297,7 @@ export default function App() {
         <section className="section contact-section reveal" id="contact">
           <div className="container contact-grid">
             <div>
-              <p className="section-kicker">05 / Contact</p>
+              <p className="section-kicker">06 / Contact</p>
               <h2>Let’s discuss your next engineering challenge.</h2>
             </div>
             <div className="contact-links">
@@ -225,6 +308,21 @@ export default function App() {
           </div>
         </section>
       </main>
+
+      {activeWork && (
+        <div className="work-dialog-backdrop" role="presentation" onClick={() => setActiveWork(null)}>
+          <section className="work-dialog" aria-label={`${activeWork.title} details`} role="dialog" aria-modal="true" onClick={(event) => event.stopPropagation()}>
+            <button className="work-dialog-close" type="button" onClick={() => setActiveWork(null)} aria-label="Close project details">×</button>
+            <img src={activeWork.image} alt={activeWork.alt} />
+            <div className="work-dialog-copy">
+              <p className="work-category">{activeWork.category}</p>
+              <h2>{activeWork.title}</h2>
+              <p>{activeWork.summary}</p>
+              <div className="work-tags">{activeWork.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+            </div>
+          </section>
+        </div>
+      )}
 
       <footer className="site-footer">
         <div className="container"><span>© {new Date().getFullYear()} Awais Ibrahim</span><span>Electronics & ICT Engineer</span></div>
