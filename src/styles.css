@@ -49,7 +49,7 @@ h3 { margin-bottom: 8px; font-size: 22px; letter-spacing: -.025em; line-height: 
 .button-secondary { background: rgb(5 9 20 / 55%); color: #f1f6ff; }
 .button-secondary:hover, .button-secondary:focus-visible { border-color: var(--cyan); box-shadow: 0 0 24px rgb(25 201 255 / 12%); transform: translateY(-3px); }
 .hero-aside { display: grid; gap: 17px; }
-.hero-card { position: relative; min-height: 336px; display: flex; flex-direction: column; justify-content: end; padding: 26px; overflow: hidden; border: 1px solid rgb(99 157 255 / 38%); border-radius: 16px; background: radial-gradient(circle at 84% 15%, rgb(137 85 255 / 24%), transparent 32%), linear-gradient(145deg, rgb(13 29 53 / 94%), rgb(6 13 26 / 96%)); box-shadow: var(--glow); }
+.hero-card { position: relative; display: flex; flex-direction: column; padding: 26px; overflow: hidden; border: 1px solid rgb(99 157 255 / 38%); border-radius: 16px; background: radial-gradient(circle at 84% 15%, rgb(137 85 255 / 24%), transparent 32%), linear-gradient(145deg, rgb(13 29 53 / 94%), rgb(6 13 26 / 96%)); box-shadow: var(--glow); }
 .hero-card > * { position: relative; z-index: 1; }
 .hero-education { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 15px; border-top: 1px solid rgb(196 228 255 / 24%); }
 .hero-education .card-label { margin-top: 0; }
@@ -207,7 +207,6 @@ h3 { margin-bottom: 8px; font-size: 22px; letter-spacing: -.025em; line-height: 
   .hero { min-height: 0; }
   .hero-grid, .split-section, .contact-grid { grid-template-columns: 1fr; }
   .hero-aside { max-width: 440px; }
-  .hero-card { min-height: 310px; }
   #experience .container::after { top: 170px; bottom: 30px; left: 5px; }
   .experience-card, .experience-card:nth-of-type(odd), .experience-card:nth-of-type(even) { width: calc(100% - 27px); margin: 20px 0 20px 27px; }
   .experience-card::before, .experience-card:nth-of-type(odd)::before, .experience-card:nth-of-type(even)::before { top: 30px; left: -34px; right: auto; }
