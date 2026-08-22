@@ -147,6 +147,7 @@ function useScrollReveal() {
 export default function App() {
   const [activeSkillFilter, setActiveSkillFilter] = useState("All");
   const [activeWork, setActiveWork] = useState(null);
+  const [contactStatus, setContactStatus] = useState("idle");
   const visibleSkills = useMemo(
     () => activeSkillFilter === "All" ? skillGroups : skillGroups.filter((group) => group.category === activeSkillFilter),
     [activeSkillFilter],
@@ -164,6 +165,37 @@ export default function App() {
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [activeWork]);
+
+  const handleContactSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const fields = new FormData(form);
+    setContactStatus("sending");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/dark.winter2055@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: fields.get("name"),
+          email: fields.get("email"),
+          message: fields.get("message"),
+          _subject: "Portfolio enquiry — awaisibrahim.com",
+          _template: "table",
+          _captcha: "true",
+          _honey: fields.get("_honey"),
+          _url: "https://awaisibrahim.com",
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok || result.success === false || result.success === "false") throw new Error("Submission failed");
+
+      form.reset();
+      setContactStatus("success");
+    } catch {
+      setContactStatus("error");
+    }
+  };
 
   return (
     <>
@@ -197,7 +229,7 @@ export default function App() {
             <aside className="hero-aside" aria-label="Professional summary">
               <div className="hero-card">
                 <p className="card-label">Based in</p>
-                <p className="card-value">Bocholt, Belgium</p>
+                <p className="card-value">Antwerp, Belgium</p>
                 <p className="card-label">Focus</p>
                 <p className="card-value">Embedded · Software · AI/ML · Field Service</p>
                 <div className="hero-education">
@@ -333,10 +365,33 @@ export default function App() {
               <p className="section-kicker">06 / Contact</p>
               <h2>Let’s discuss your next engineering challenge.</h2>
             </div>
-            <div className="contact-links">
+            <div className="contact-stack">
+              <div className="contact-links">
               <a href="mailto:awaisibrahim11@gmail.com">awaisibrahim11@gmail.com</a>
               <a href="tel:+32465925322">+32 465 925 322</a>
               <a href="https://www.linkedin.com/in/awais-ibrahim-4710b9213/" target="_blank" rel="noreferrer">LinkedIn profile ↗</a>
+              </div>
+              <form className="contact-form" onSubmit={handleContactSubmit}>
+                <label>
+                  Your name
+                  <input name="name" type="text" autoComplete="name" placeholder="Your name" required />
+                </label>
+                <label>
+                  Email address
+                  <input name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
+                </label>
+                <label>
+                  Message
+                  <textarea name="message" rows="5" placeholder="Tell me about your project or opportunity..." required />
+                </label>
+                <input className="contact-honeypot" name="_honey" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" />
+                <button type="submit" disabled={contactStatus === "sending"}>
+                  {contactStatus === "sending" ? "Sending..." : "Send message"}
+                </button>
+                {contactStatus === "success" && <p className="contact-status is-success" role="status">Thanks — your message has been sent.</p>}
+                {contactStatus === "error" && <p className="contact-status is-error" role="alert">Unable to send right now. Please use the email link above.</p>}
+                <p className="contact-note">Your details are used only to respond to your enquiry.</p>
+              </form>
             </div>
           </div>
         </section>
