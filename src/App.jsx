@@ -196,13 +196,17 @@ export default function App() {
             </div>
             <aside className="hero-aside" aria-label="Professional summary">
               <div className="hero-card">
-                <img className="hero-university-mark" src="/brands/uantwerp.svg" alt="University of Antwerp" />
                 <p className="card-label">Based in</p>
                 <p className="card-value">Bocholt, Belgium</p>
                 <p className="card-label">Focus</p>
                 <p className="card-value">Embedded · Software · AI/ML · Field Service</p>
-                <p className="card-label">Education</p>
-                <p className="card-value">MSc Electronics & ICT Engineering<br />University of Antwerp</p>
+                <div className="hero-education">
+                  <img className="hero-university-mark" src="/brands/uantwerp.svg" alt="University of Antwerp" />
+                  <div>
+                    <p className="card-label">Education</p>
+                    <p className="card-value">MSc Electronics & ICT Engineering<br />University of Antwerp</p>
+                  </div>
+                </div>
               </div>
               <div className="signal-card" aria-hidden="true">
                 <span className="signal-core">AI</span>
