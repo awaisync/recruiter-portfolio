@@ -393,6 +393,10 @@ export default function App() {
                 <li>Designed supervised machine-learning workflows covering data validation, feature engineering, training, and performance evaluation.</li>
                 <li>Evaluated Random Forest models and a spatio-temporal Graph Neural Network for next-hour station-ridership forecasting.</li>
               </ul>
+              <figure className="research-visual">
+                <img src="/work/wmata-demand-outlook.png" alt="WMATA Demand Outlook prototype showing weather-aware station ridership forecasting, a station map, and a 24-hour demand outlook." loading="lazy" />
+                <figcaption>WMATA Demand Outlook: an interactive weather-aware prototype for next-hour station ridership forecasting and network-planning scenarios.</figcaption>
+              </figure>
             </article>
           </div>
         </section>
