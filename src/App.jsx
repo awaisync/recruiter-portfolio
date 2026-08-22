@@ -468,6 +468,7 @@ export default function App() {
 
       <footer className="site-footer">
         <div className="container"><span>© {new Date().getFullYear()} Awais Ibrahim</span><span>Electronics & ICT Engineer</span></div>
+        <p className="portfolio-disclaimer">Brand names, logos, instrument names, and product images are shown solely to document Awais Ibrahim's professional experience. They remain the property of their respective owners; no endorsement, partnership, or commercial use is implied.</p>
         <a className="privacy-link" href="/privacy.html">Privacy policy</a>
       </footer>
     </>
