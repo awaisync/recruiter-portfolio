@@ -47,7 +47,7 @@ const skillGroups = [
 
 const education = [
   {
-    period: "2024 - 2026",
+    period: "2025 - 2026",
     degree: "Master of Science - Electronics and ICT Engineering",
     institution: "University of Antwerp, Belgium",
     details: "Great Distinction · Specialisation in IoT, low-power wireless communication, and embedded systems.",
@@ -291,6 +291,18 @@ export default function App() {
                 </article>
               ))}
             </div>
+            <article className="research-feature">
+              <div>
+                <p className="section-kicker">Research internship / M4S Lab</p>
+                <h3>Weather impacts on public transport</h3>
+                <p>Master's thesis research at M4S Lab — Modelling for Sustainability, University of Antwerp, in collaboration with the Smart Public Transport Lab, TU Delft, Netherlands.</p>
+              </div>
+              <ul>
+                <li>Built a data-engineering pipeline by integrating Washington, D.C. Metrorail demand data with meteorological data.</li>
+                <li>Designed supervised machine-learning workflows covering data validation, feature engineering, training, and performance evaluation.</li>
+                <li>Evaluated Random Forest models and a spatio-temporal Graph Neural Network for next-hour station-ridership forecasting.</li>
+              </ul>
+            </article>
           </div>
         </section>
 
