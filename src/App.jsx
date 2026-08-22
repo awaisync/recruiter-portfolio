@@ -22,6 +22,10 @@ const experience = [
       "Diagnosed electro-mechanical, electronic, firmware, pneumatic, and network faults.",
       "Integrated instruments with LIS/HIS using HL7/ASTM and delivered application training and customer support.",
     ],
+    logos: [
+      { src: "/brands/abbott.png", alt: "Abbott" },
+      { src: "/brands/grifols.png", alt: "Grifols" },
+    ],
   },
   {
     dates: "Jul 2018 - Jun 2019",
@@ -50,6 +54,7 @@ const education = [
     period: "2025 - 2026",
     degree: "Master of Science - Electronics and ICT Engineering",
     institution: "University of Antwerp, Belgium",
+    icon: "/brands/uantwerp.svg",
     details: "Great Distinction · Specialisation in IoT, low-power wireless communication, and embedded systems.",
     thesis: "Weather Impacts on Public Transport - data-engineering and machine-learning pipelines for next-hour station ridership forecasting.",
   },
@@ -229,6 +234,12 @@ export default function App() {
                   <p className="company">{role.company}</p>
                   <h3>{role.title}</h3>
                   <ul>{role.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
+                  {role.logos && (
+                    <div className="experience-logos" aria-label="Systems supported">
+                      <span>Systems supported</span>
+                      {role.logos.map((logo) => <img src={logo.src} alt={logo.alt} key={logo.alt} />)}
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
@@ -284,8 +295,13 @@ export default function App() {
               {education.map((item) => (
                 <article className="education-card" key={item.degree}>
                   <p className="period">{item.period}</p>
-                  <h3>{item.degree}</h3>
-                  <p className="institution">{item.institution}</p>
+                  <div className="education-heading">
+                    {item.icon && <img src={item.icon} alt="University of Antwerp" />}
+                    <div>
+                      <h3>{item.degree}</h3>
+                      <p className="institution">{item.institution}</p>
+                    </div>
+                  </div>
                   <p>{item.details}</p>
                   <p className="thesis"><strong>Thesis:</strong> <em>{item.thesis}</em></p>
                 </article>
