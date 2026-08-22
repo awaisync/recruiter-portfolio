@@ -184,6 +184,7 @@ export default function App() {
           _template: "table",
           _captcha: "true",
           _honey: fields.get("_honey"),
+          privacy_consent: fields.get("privacy_consent") ? "Confirmed" : "",
           _url: "https://awaisibrahim.com",
         }),
       });
@@ -384,6 +385,10 @@ export default function App() {
                   Message
                   <textarea name="message" rows="5" placeholder="Tell me about your project or opportunity..." required />
                 </label>
+                <label className="contact-consent">
+                  <input name="privacy_consent" type="checkbox" required />
+                  <span>I have read the <a href="/privacy.html" target="_blank" rel="noreferrer">Privacy Policy</a> and agree that my details may be used to respond to my enquiry.</span>
+                </label>
                 <input className="contact-honeypot" name="_honey" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" />
                 <button type="submit" disabled={contactStatus === "sending"}>
                   {contactStatus === "sending" ? "Sending..." : "Send message"}
@@ -414,6 +419,7 @@ export default function App() {
 
       <footer className="site-footer">
         <div className="container"><span>© {new Date().getFullYear()} Awais Ibrahim</span><span>Electronics & ICT Engineer</span></div>
+        <a className="privacy-link" href="/privacy.html">Privacy policy</a>
       </footer>
     </>
   );
