@@ -51,7 +51,7 @@ const skillGroups = [
 
 const education = [
   {
-    period: "2025 - 2026",
+    period: "2024 - 2026",
     degree: "Master of Science - Electronics and ICT Engineering",
     institution: "University of Antwerp, Belgium",
     icon: "/brands/uantwerp.svg",
