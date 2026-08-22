@@ -196,6 +196,7 @@ export default function App() {
             </div>
             <aside className="hero-aside" aria-label="Professional summary">
               <div className="hero-card">
+                <img className="hero-university-mark" src="/brands/uantwerp.svg" alt="University of Antwerp" />
                 <p className="card-label">Based in</p>
                 <p className="card-value">Bocholt, Belgium</p>
                 <p className="card-label">Focus</p>

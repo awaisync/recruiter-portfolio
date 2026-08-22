@@ -50,8 +50,9 @@ h3 { margin-bottom: 8px; font-size: 22px; letter-spacing: -.025em; line-height: 
 .button-secondary:hover, .button-secondary:focus-visible { border-color: var(--cyan); box-shadow: 0 0 24px rgb(25 201 255 / 12%); transform: translateY(-3px); }
 .hero-aside { display: grid; gap: 17px; }
 .hero-card { position: relative; min-height: 336px; display: flex; flex-direction: column; justify-content: end; padding: 26px; overflow: hidden; border: 1px solid rgb(99 157 255 / 38%); border-radius: 16px; background: linear-gradient(to top, rgb(4 8 18 / 96%) 0%, rgb(4 8 18 / 46%) 62%, rgb(4 8 18 / 15%) 100%), url("/work/hospicare-panther.jpg") 50% / cover; box-shadow: var(--glow); }
-.hero-card::before { position: absolute; top: 13px; right: 13px; width: 62px; height: 62px; content: ""; border-radius: 13px; background: linear-gradient(135deg, var(--cyan), var(--violet)); box-shadow: 0 0 29px rgb(84 107 255 / 48%); }
+.hero-card::before { position: absolute; top: 27px; right: 27px; width: 80px; height: 80px; content: ""; border-radius: 18px; background: linear-gradient(135deg, rgb(25 201 255 / 52%), rgb(137 85 255 / 60%)); filter: blur(12px); }
 .hero-card > * { position: relative; z-index: 1; }
+.hero-university-mark { position: absolute !important; z-index: 2 !important; top: 19px; right: 19px; width: 84px; height: 84px; padding: 11px; border: 1px solid rgb(208 236 255 / 72%); border-radius: 17px; background: rgb(250 253 255 / 96%); box-shadow: 0 10px 30px rgb(0 0 0 / 32%), 0 0 30px rgb(25 201 255 / 25%); object-fit: contain; }
 .card-label { margin: 13px 0 1px; color: #91dfff; }
 .card-label:first-child { margin-top: 0; }
 .card-value { margin-bottom: 0; color: #eef6ff; font-weight: 700; line-height: 1.35; }
