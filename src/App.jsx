@@ -119,7 +119,8 @@ const selectedWork = [
     tags: ["React Native", "TypeScript", "Redux", "Verified listings"],
   },
   {
-    visual: "agency21",
+    image: "/work/agency21.png",
+    alt: "Agency21 mobile real-estate application interface.",
     category: "Mobile product engineering",
     title: "Agency21 real-estate platform",
     summary: "Contributed to the digital real-estate ecosystem behind Agency21, supporting mobile property discovery and customer journeys for buying, renting, and investment decisions.",
@@ -127,7 +128,8 @@ const selectedWork = [
     links: [{ label: "Visit Agency21", url: "https://www.agency21.com.pk/" }],
   },
   {
-    visual: "worksapp",
+    image: "/work/worksapp.png",
+    alt: "WorksApp mobile real-estate workflow application interface.",
     category: "Real-estate workflow app",
     title: "WorksApp",
     summary: "Contributed to cross-platform workflow tooling for centralised client details, property searches, communication history, scheduling, and day-to-day real-estate activity management.",
