@@ -101,6 +101,14 @@ h3 { margin-bottom: 8px; font-size: 22px; letter-spacing: -.025em; line-height: 
 .work-card:hover, .work-card:focus-visible { outline: none; border-color: rgb(40 211 255 / 70%); box-shadow: 0 22px 46px rgb(0 0 0 / 39%), 0 0 35px rgb(25 201 255 / 17%); transform: translateY(-8px); }
 .work-card img { display: block; width: 100%; height: 235px; object-fit: cover; filter: saturate(1.05) contrast(1.04); transition: transform 450ms ease, filter 450ms ease; }
 .work-card:hover img, .work-card:focus-visible img { filter: saturate(1.22) contrast(1.08); transform: scale(1.055); }
+.work-card-visual, .work-dialog-visual { position: relative; display: grid; width: 100%; min-height: 235px; overflow: hidden; place-content: center; isolation: isolate; background: linear-gradient(135deg, #0c1d32, #102d50 54%, #084e65); color: #fff; text-align: center; }
+.work-card-visual::before, .work-dialog-visual::before { position: absolute; z-index: -1; top: -35%; right: -16%; width: 74%; aspect-ratio: 1; border: 1px solid rgb(255 255 255 / 24%); border-radius: 50%; box-shadow: 0 0 75px rgb(25 201 255 / 24%), inset 0 0 50px rgb(137 85 255 / 20%); content: ""; }
+.work-card-visual span, .work-dialog-visual span { font-size: clamp(26px, 3vw, 42px); font-weight: 760; letter-spacing: -.055em; line-height: .8; }
+.work-card-visual strong, .work-dialog-visual strong { color: #55e7ff; font-size: clamp(35px, 4vw, 63px); letter-spacing: -.08em; line-height: .88; text-shadow: 0 0 26px rgb(25 201 255 / 55%); }
+.work-card-visual.worksapp, .work-dialog-visual.worksapp { background: linear-gradient(135deg, #093a3e, #1b7871 56%, #73afa4); }
+.work-card-visual.agency21, .work-dialog-visual.agency21 { background: linear-gradient(135deg, #134928, #4ca366 54%, #a0d8a1); }
+.work-card-visual.agency21 strong, .work-dialog-visual.agency21 strong { color: #effff0; }
+.work-card-visual.proptech, .work-dialog-visual.proptech { background: linear-gradient(135deg, #24173d, #4c2a79 52%, #0d7191); }
 .work-card-content { display: grid; gap: 3px; padding: 16px 17px 19px; }
 .work-card-content strong { font-size: 19px; letter-spacing: -.025em; }
 .work-category { margin: 0; color: #79dffa; font-size: 11px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
@@ -108,12 +116,16 @@ h3 { margin-bottom: 8px; font-size: 22px; letter-spacing: -.025em; line-height: 
 .work-dialog-backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 24px; background: rgb(0 4 12 / 76%); backdrop-filter: blur(8px); }
 .work-dialog { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr); width: min(980px, 100%); max-height: min(700px, calc(100vh - 48px)); overflow: auto; border: 1px solid rgb(74 181 255 / 34%); border-radius: 15px; background: #081221; box-shadow: 0 25px 80px rgb(0 0 0 / 58%), 0 0 52px rgb(25 201 255 / 13%); }
 .work-dialog > img { width: 100%; min-height: 310px; height: 100%; object-fit: cover; }
+.work-dialog-visual { min-height: 310px; height: 100%; }
 .work-dialog-copy { align-self: center; padding: clamp(28px, 5vw, 54px); }
 .work-dialog-copy h2 { margin-bottom: 16px; font-size: clamp(32px, 4vw, 48px); }
 .work-dialog-copy > p:not(.work-category) { color: var(--muted); }
 .work-dialog-close { position: absolute; z-index: 1; top: 12px; right: 12px; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid rgb(151 205 255 / 31%); border-radius: 50%; background: rgb(5 14 29 / 87%); color: #fff; cursor: pointer; font-size: 25px; line-height: 1; }
 .work-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
 .work-tags span { padding: 5px 8px; border: 1px solid rgb(100 178 255 / 20%); border-radius: 999px; background: rgb(25 201 255 / 9%); color: #a9ebff; font-size: 12px; font-weight: 750; }
+.work-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.work-links a { padding: 8px 12px; border: 1px solid rgb(25 201 255 / 55%); border-radius: 999px; background: rgb(25 201 255 / 10%); color: #e7fcff; font-size: 13px; font-weight: 800; text-decoration: none; transition: background 180ms ease, transform 180ms ease; }
+.work-links a:hover, .work-links a:focus-visible { background: rgb(25 201 255 / 22%); outline: none; transform: translateY(-2px); }
 
 .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 .skill-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: -12px 0 25px; }

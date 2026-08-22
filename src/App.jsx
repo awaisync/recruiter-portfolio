@@ -99,6 +99,7 @@ const selectedWork = [
     title: "Employee of the Month at IMARAT",
     summary: "Worked in an Agile engineering environment on mobile and backend products supporting IMARAT’s digital real-estate platforms.",
     tags: ["Product delivery", "Agile", "React Native", "Spring Boot"],
+    links: [{ label: "Visit IMARAT", url: "https://imarat.com.pk/" }],
   },
   {
     image: "/work/propsure-dashboard.png",
@@ -107,6 +108,7 @@ const selectedWork = [
     title: "PropSure property verification",
     summary: "Contributed to property-technology delivery around PropSure's land-information ecosystem, including Online Property Verification System workflows that support transparent property verification and informed investment decisions.",
     tags: ["LIMS", "OPVS", "Property data", "API integration"],
+    links: [{ label: "Explore IMARAT PropTech", url: "https://imarat.com.pk/imarat-proptech/" }],
   },
   {
     image: "/work/graana-mobile.png",
@@ -115,6 +117,30 @@ const selectedWork = [
     title: "Graana property-search app",
     summary: "Developed and maintained cross-platform features for a property-search experience centred on fast discovery, verified listings, smart filters, project exploration, and direct agent contact.",
     tags: ["React Native", "TypeScript", "Redux", "Verified listings"],
+  },
+  {
+    visual: "agency21",
+    category: "Mobile product engineering",
+    title: "Agency21 real-estate platform",
+    summary: "Contributed to the digital real-estate ecosystem behind Agency21, supporting mobile property discovery and customer journeys for buying, renting, and investment decisions.",
+    tags: ["Agency21", "React Native", "Property discovery", "Mobile delivery"],
+    links: [{ label: "Visit Agency21", url: "https://www.agency21.com.pk/" }],
+  },
+  {
+    visual: "worksapp",
+    category: "Real-estate workflow app",
+    title: "WorksApp",
+    summary: "Contributed to cross-platform workflow tooling for centralised client details, property searches, communication history, scheduling, and day-to-day real-estate activity management.",
+    tags: ["WorksApp", "React Native", "Client workflows", "Productivity"],
+    links: [{ label: "Open WorksApp on Google Play", url: "https://play.google.com/store/apps/details?id=com.graana.worksapp" }],
+  },
+  {
+    visual: "proptech",
+    category: "PropTech ecosystem",
+    title: "IMARAT PropTech",
+    summary: "Contributed to digital real-estate products in IMARAT's PropTech ecosystem, including data-led property workflows around land information, verification, customer relationships, and operational tools.",
+    tags: ["PropTech", "LIMS", "OPVS", "CRM", "Property data"],
+    links: [{ label: "Explore IMARAT PropTech", url: "https://imarat.com.pk/imarat-proptech/" }],
   },
 ];
 
@@ -293,7 +319,14 @@ export default function App() {
             <div className="work-grid">
               {selectedWork.map((item) => (
                 <button className="work-card" key={item.title} type="button" onClick={() => setActiveWork(item)}>
-                  <img src={item.image} alt={item.alt} loading="lazy" />
+                  {item.image ? (
+                    <img src={item.image} alt={item.alt} loading="lazy" />
+                  ) : (
+                    <span className={`work-card-visual ${item.visual}`} aria-hidden="true">
+                      <span>{item.visual === "agency21" ? "Agency" : item.visual === "worksapp" ? "Works" : "IMARAT"}</span>
+                      <strong>{item.visual === "agency21" ? "21" : item.visual === "worksapp" ? "App" : "PropTech"}</strong>
+                    </span>
+                  )}
                   <span className="work-card-content">
                     <span className="work-category">{item.category}</span>
                     <strong>{item.title}</strong>
@@ -408,12 +441,24 @@ export default function App() {
         <div className="work-dialog-backdrop" role="presentation" onClick={() => setActiveWork(null)}>
           <section className="work-dialog" aria-label={`${activeWork.title} details`} role="dialog" aria-modal="true" onClick={(event) => event.stopPropagation()}>
             <button className="work-dialog-close" type="button" onClick={() => setActiveWork(null)} aria-label="Close project details">×</button>
-            <img src={activeWork.image} alt={activeWork.alt} />
+            {activeWork.image ? (
+              <img src={activeWork.image} alt={activeWork.alt} />
+            ) : (
+              <div className={`work-dialog-visual ${activeWork.visual}`} aria-hidden="true">
+                <span>{activeWork.visual === "agency21" ? "Agency" : activeWork.visual === "worksapp" ? "Works" : "IMARAT"}</span>
+                <strong>{activeWork.visual === "agency21" ? "21" : activeWork.visual === "worksapp" ? "App" : "PropTech"}</strong>
+              </div>
+            )}
             <div className="work-dialog-copy">
               <p className="work-category">{activeWork.category}</p>
               <h2>{activeWork.title}</h2>
               <p>{activeWork.summary}</p>
               <div className="work-tags">{activeWork.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              {activeWork.links && (
+                <div className="work-links">
+                  {activeWork.links.map((link) => <a href={link.url} key={link.url} target="_blank" rel="noreferrer">{link.label} <span aria-hidden="true">â†—</span></a>)}
+                </div>
+              )}
             </div>
           </section>
         </div>
